@@ -23,17 +23,21 @@
         body {
             width: 100%;
             height: 100%;
-            position: relative;
+            position: absolute;
             background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         .entermsg {
             width: 100%;
             height: 100%;
             margin: 0;
-            position: absolute;
-            top: 18%;
-            right:25%;
+            position: relative;
+            top: 8em;
+            right: 25em;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -43,8 +47,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 50%;
-            left: 25%;
+            top: 22.5em;
+            left: 20.7em;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -55,8 +59,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 65%;
-            left: 25%;
+            top: 29.3em;
+            left: 20.7em;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -66,8 +70,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 70%;
-            left: 25%;
+            top: 31.5em;
+            left: 20.7em;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -77,8 +81,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 28%;
-            right:30%;
+            top: 12.5em;
+            right:25em;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -129,17 +133,19 @@
     </div>
 
     <div class="entermsg">
-        <form>
+        <form onSubmit="return false;">
             <p>Enter Message:</p>
             <input style="width:300px; height:25px; border: solid 2px black; font-size: 16px" 
                 type="textarea" name="message" id="messageInput">
-            <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
+            <button type="button" style="width: 125px; height:25px; border: solid 2px black; font-size: 13px; background-color: darkgray;" 
                 onclick="showPreviewText()">Preview Message</button>
+            <!-- <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
+                onclick="getDisplayStatus()">GET pull</button> -->
         </form>
     </div>
 
     <div class="clearButton">
-        <button style="width:250px; height:28px; border: solid 2px black; font-size: 18px;" 
+        <button style="width:250px; height:28px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
             id="clearButton" type="submit" onclick="clearMessage()"> Clear Message </button>
     </div>
     
@@ -149,7 +155,7 @@
     </div>
 
     <div class="submitMessage">
-        <button style="width:320px; height:30px; border: solid 2px black; font-size: 20px;" 
+        <button style="width:320px; height:30px; border: solid 2px black; font-size: 20px; background-color: darkgray;" 
             id="submitButton" type="submit" onclick="submitMessage()"> Submit Message </button>
     </div>
 
@@ -164,13 +170,15 @@
 
 
     <script>
+
         function showPreviewText() {
             var message = document.getElementById("messageInput").value
             if (message != '') {
                 document.getElementById("preview").value = message
                 document.getElementById("submitButton").innerText = "Submit Message"
-                document.getElementById("submitButton").style.backgroundColor = ""
+                document.getElementById("submitButton").style.backgroundColor = "darkgray"
             }
+
         }
         function clearMessage() {
             document.getElementById("preview").value = ''
@@ -206,6 +214,20 @@
                 document.getElementById("password").style.backgroundColor = "red";
                 return false;
             }
+        }
+        function getDisplayStatus() {
+            var val = '';
+            const request = new XMLHttpRequest();
+            request.open('GET', "file:///Users/willhallas/Documents/Project/get.json")//"https://192.168.1.81/Documents/Project/get.json")
+            request.send();
+            request.responseType = 'json';
+            request.onload = () => {
+                if (request.readyState === 4 && request.status === 200) {
+                    data = request.response
+                    val = data[datum]
+                    document.getElementById("preview").value = val
+                }
+            };
         }
     </script> 
 </body>
