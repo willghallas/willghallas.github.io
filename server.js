@@ -8,11 +8,11 @@ const htmlListener = function (req,res) {
         .then(contents => {
             res.setHeader("Content-Type", "text/html");
             switch (req.url) {
-                case "/cat":
+                case "/will":
                     res.writeHead(200);
                     res.end(contents);
                     break;
-                case "/dog":
+                case "/brooke":
                     res.writeHead(200);
                     res.end(contents);
                     break;
