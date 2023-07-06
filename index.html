@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>My Website</title>
+    <title>Message Display Interface</title>
     <style>
         *,
         html {
@@ -24,54 +24,18 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            background-color: white;
-            margin-left: auto;
-            margin-right: auto;
+            background-color: rgba(30, 28, 28, 0.896);
             overflow-x: hidden;
             overflow-y: hidden;
+            z-index:-1;
         }
 
         .entermsg {
             width: 100%;
             height: 100%;
-            margin: 0;
-            position: relative;
-            top: 8em;
-            right: 25em;
-            font-family: "Trebuchet MS", Helvetica, sans-serif;
-            text-align: center;
-        }
-
-        .showmsg {
-            width: 100%;
-            height: 100%;
-            margin: 0;
             position: absolute;
-            top: 22.5em;
-            left: 20.7em;
-            font-family: "Trebuchet MS", Helvetica, sans-serif;
-            text-align: center;
-        }
-
-    
-        .submitMessage {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            position: absolute;
-            top: 29.3em;
-            left: 20.7em;
-            font-family: "Trebuchet MS", Helvetica, sans-serif;
-            text-align: center;
-        }
-
-        .password {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            position: absolute;
-            top: 31.5em;
-            left: 20.7em;
+            top: 37%;
+            z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
@@ -81,32 +45,109 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 12.5em;
-            right:25em;
+            top: 50%;
+            z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
         }
 
+        .showmsg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 60%;
+            z-index: 1;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .submitMessage {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: absolute;
+            top: 75.5%;
+            z-index: 1;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .username {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: absolute;
+            top: 24%;
+
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .password {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            position: absolute;
+            top: 29%;
+
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-align: center;
+        }
 
         .header {
             width: 100%;
-            height: 15%;
+            height: 13%;
             position: absolute;
-            background-color: red;
+            background-color: rgba(0, 0, 255, 0.692);
             text-align: left;
             text-decoration-line: underline;
             text-decoration-color: white;
         }
 
-        input::placeholder {
-            color: black;
+        .topbar {
+            width: 100%;
+            height: 20%;
+            position: absolute;
+            background-color: rgb(32, 32, 32);
+            text-align: left;
+            text-decoration-line: underline;
+            text-decoration-color: white;
+        }
+
+        .userpassbox {
+            width: 30%;
+            height: 16%;
+            background-color: rgb(203, 203, 203);
+            margin-left: 35%;
+            margin-top: 10.5%;
+            z-index: 0;
+            position: absolute;
             text-align: center;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 15px;
+        }
+
+        .foreground {
+            width: 88%;
+            height: 92%;
+            margin-left: 6%;
+            position: absolute;
+            background-color: white;
+            z-index:0;
+            border-radius: 10px;
+        }
+
+        input::placeholder {
+            color: rgba(0, 0, 0, 0.517);
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
         }
         
-
         h1 {
             font-size: 50px;
-            text-align: center
+            text-align: center;
+            font-family: monaco, Consolas, "Lucida Console"
         }
 
         p {
@@ -114,7 +155,7 @@
         }
 
         .button {
-            background-color: #4CAF50; /* Green */
+            background-color: #00ff08; /* Green */
             border: 2px solid black;
             color: white;
             padding: 15px 32px;
@@ -127,109 +168,140 @@
     </style>
 </head>
 
-<body onload = "restoreMessage()">
-    <div class="header" style="color: white">
-        <h1>Super Mega Awesome Message Sender</h1>
-    </div>
+<body>
+    <div class="foreground">
+        <div class="topbar"></div>
+        <div class="header" style="color: white">
+            <h1>Display Message Interface</h1>
+        </div>
+        <div class="userpassbox">Enter Username and Password</div>
+        
+        <div class="entermsg">
+            <form onSubmit="return false;">
+                <p>Message Input:</p>
+                <textarea style="resize:none; width:300px; height:30px; border: solid 2px black; font-size: 16px" 
+                     id="messageInput"></textarea>
+                <button type="button" style="width: 125px; height:25px; border: solid 2px black; font-size: 13px; background-color: darkgray;" 
+                    onclick="showPreviewText()">Preview Message</button>
+                <!-- <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
+                    onclick="getDisplayStatus()">GET pull</button> -->
+            </form>
+        </div>
 
-    <div class="entermsg">
-        <form onSubmit="return false;">
-            <p>Enter Message:</p>
-            <input style="width:300px; height:25px; border: solid 2px black; font-size: 16px" 
-                type="textarea" name="message" id="messageInput">
-            <button type="button" style="width: 125px; height:25px; border: solid 2px black; font-size: 13px; background-color: darkgray;" 
-                onclick="showPreviewText()">Preview Message</button>
-            <!-- <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
-                onclick="getDisplayStatus()">GET pull</button> -->
-        </form>
-    </div>
+        <div class="clearButton">
+            <button style="width:250px; height:28px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
+                id="clearButton" type="submit" onclick="clearMessage()"> Clear Message </button>
+        </div>
+        
+        <div class="showmsg">
+            <textarea readonly style="resize:none; width:320px; height:100px; border: solid 2px black; font-size: 16px; background-color: dimgray" 
+                id="preview"></textarea>
+        </div>
 
-    <div class="clearButton">
-        <button style="width:250px; height:28px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
-            id="clearButton" type="submit" onclick="clearMessage()"> Clear Message </button>
-    </div>
-    
-    <div class="showmsg">
-        <textarea readonly style="resize:none; width:320px; height:100px; border: solid 2px black; font-size: 16px;" 
-            id="preview"></textarea>
-    </div>
+        <div class="submitMessage">
+            <button style="width:324px; height:30px; border: solid 2px black; font-size: 20px; background-color: darkgray;" 
+                id="submitButton" type="submit" onclick="submitMessage()"> Submit Message </button>
+        </div>
+        <div class="username" onchange="unlockUtilities()">
+            <input style="width:320px; height:25px; border: solid 2px black; font-size: 16px" 
+                    type="text" id="username" placeholder="Username">
+        </div>
+        <div class="password" onchange="unlockUtilities()">
+            <input type="password" id="password" placeholder = "Password"
+                style="resize:none; width:320px; height:25px; border: solid 2px black; 
+                    font-size: 16px; background-color: rgba(255, 0, 0, 0.281)">
+        </div>
+        
 
-    <div class="submitMessage">
-        <button style="width:320px; height:30px; border: solid 2px black; font-size: 20px; background-color: darkgray;" 
-            id="submitButton" type="submit" onclick="submitMessage()"> Submit Message </button>
-    </div>
-
-    <div class="password" onchange="checkPasswordInBox()">
-        <input type="password" id="password" placeholder = "Enter Password"
-            style="resize:none; width:320px; height:25px; border: solid 2px black; 
-                font-size: 16px; background-color:red;">
-    </div>
-
-    
-    
-
-
-    <script>
-
-        function showPreviewText() {
-            var message = document.getElementById("messageInput").value
-            if (message != '') {
-                document.getElementById("preview").value = message
-                document.getElementById("submitButton").innerText = "Submit Message"
-                document.getElementById("submitButton").style.backgroundColor = "darkgray"
-            }
-
-        }
-        function clearMessage() {
-            document.getElementById("preview").value = ''
-        }
-        function restoreMessage() {
-            let newMessage = localStorage.getItem("message")
-            document.getElementById("preview").value = newMessage
-        }
-        function saveMessage() {
-            var message = document.getElementById("preview").value
-            localStorage.setItem("message", message);
-            let stored = localStorage.getItem("message")
-        }
-        function submitMessage() {
-            var editable = checkPasswordInBox();
-            if (editable) {
-                saveMessage()
-                document.getElementById("submitButton").innerText = "Submitted"
-                document.getElementById("submitButton").style.backgroundColor = "dimgray"
-            }
-            else {
-                alert("Make sure password is correct")
-            }
-
-        }
-        function checkPasswordInBox() {
-            let password = "dog1";
-            if (password === document.getElementById("password").value) {
-                document.getElementById("password").style.backgroundColor = "green";
-                return true;
-            }
-            else {
-                document.getElementById("password").style.backgroundColor = "red";
-                return false;
-            }
-        }
-        function getDisplayStatus() {
-            var val = '';
-            const request = new XMLHttpRequest();
-            request.open('GET', "file:///Users/willhallas/Documents/Project/get.json")//"https://192.168.1.81/Documents/Project/get.json")
-            request.send();
-            request.responseType = 'json';
-            request.onload = () => {
-                if (request.readyState === 4 && request.status === 200) {
-                    data = request.response
-                    val = data[datum]
-                    document.getElementById("preview").value = val
+        <script>
+            function showPreviewText() {
+                var message = document.getElementById("messageInput").value
+                if (message != '' && checkUserAndPassword()) {
+                    document.getElementById("preview").value = message
+                    document.getElementById("submitButton").innerText = "Submit Message"
+                    document.getElementById("submitButton").style.backgroundColor = "darkgray"
                 }
-            };
-        }
-    </script> 
+            }
+            function clearMessage() {
+                document.getElementById("preview").value = ''
+                document.getElementById("messageInput").value = ''
+            }
+            function restoreMessage() {
+                document.getElementById("preview").style.backgroundColor = "white"
+                let newMessage = localStorage.getItem("message")
+                document.getElementById("preview").value = newMessage
+            }
+            function saveMessage() {
+                var message = document.getElementById("preview").value
+                localStorage.setItem("message", message);
+            }
+            function hideMessage() {
+                document.getElementById("preview").style.backgroundColor = "dimgray"
+                let newMessage = ''
+                document.getElementById("preview").value = newMessage
+            }
+            function submitMessage() {
+                var editable = checkUserAndPassword();
+                if (editable) {
+                    saveMessage()
+                    document.getElementById("submitButton").innerText = "Submitted"
+                    document.getElementById("submitButton").style.backgroundColor = "dimgray"
+                }
+                else {
+                    alert("Check username and password")
+                }
+            }
+            function checkUserAndPassword() {
+                let inputUser = document.getElementById("username").value;
+                let inputPassword = document.getElementById("password").value
+                
+                let willPassword = "dog1";
+                let brookePassword = "dog2";
+                let user1 = "will";
+                let user2 = "brooke";
+                if (inputUser === user1) {
+                    if (inputPassword === willPassword) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else if (inputUser === user2) {
+                    if (inputPassword === brookePassword) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+            function unlockUtilities() {
+                if (checkUserAndPassword()) {
+                    document.getElementById("password").style.backgroundColor = "rgba(0, 255, 0, 0.281)";
+                    restoreMessage()
+                }
+                else {
+                    document.getElementById("password").style.backgroundColor = "rgba(255, 0, 0, 0.281)";
+                    hideMessage()
+                }
+            }
+            function getDisplayStatus() {
+                var val = '';
+                const request = new XMLHttpRequest();
+                request.open('GET', "file:///Users/willhallas/Documents/Project/get.json")//"https://192.168.1.81/Documents/Project/get.json")
+                request.send();
+                request.responseType = 'json';
+                request.onload = () => {
+                    if (request.readyState === 4 && request.status === 200) {
+                        data = request.response
+                        val = data[datum]
+                        document.getElementById("preview").value = val
+                    }
+                };
+            }
+        </script> 
+    </div>
 </body>
 
 </html>
