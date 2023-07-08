@@ -30,6 +30,8 @@
             z-index:-1;
             min-height: 720px;
             min-width: 1440px;
+            max-width:1455px;
+            max-height: 720px;
         }
 
         .entermsg {
@@ -47,8 +49,8 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            top: 49.7%;
-            margin-left: -23.95%;
+            top: 9.6%;
+            margin-left: -5.9%;
             z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
@@ -59,8 +61,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 49.7%;
-            margin-left: -12%;
+            top: 9.6%;
+            margin-left: 5.9%;
             z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
@@ -132,7 +134,7 @@
         .userpassbox {
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: relative;
             margin-top: 8.5em;
             text-align: center;
             z-index: 0;
@@ -197,17 +199,17 @@
                 <!-- <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
                     onclick="getDisplayStatus()">GET pull</button> -->
             </form>
+            <div class="previewButton">
+                <button type="button" style="width: 153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
+                        onclick="showPreviewText()">Preview</button>
+            </div>
+    
+            <div class="clearButton">
+                <button style="width:153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
+                    id="clearButton" type="submit" onclick="clearMessage()"> Clear</button>
+            </div>
         </div>
 
-        <div class="previewButton">
-            <button type="button" style="width: 153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
-                    onclick="showPreviewText()">Preview</button>
-        </div>
-
-        <div class="clearButton">
-            <button style="width:153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
-                id="clearButton" type="submit" onclick="clearMessage()"> Clear</button>
-        </div>
         
         <div class="showmsg">
             <textarea readonly style="resize:none; width:320px; height:100px; border: solid 2px black; font-size: 24px; background-color: dimgray" 
