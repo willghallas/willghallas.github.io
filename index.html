@@ -28,13 +28,27 @@
             overflow-x: hidden;
             overflow-y: hidden;
             z-index:-1;
+            min-height: 720px;
+            min-width: 1440px;
         }
 
         .entermsg {
             width: 100%;
             height: 100%;
             position: absolute;
-            top: 37%;
+            top: 40%;
+            z-index: 1;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-align: center;
+            margin-left: -18%;
+        }
+
+        .previewButton {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 49.7%;
+            margin-left: -23.95%;
             z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
@@ -45,7 +59,8 @@
             height: 100%;
             margin: 0;
             position: absolute;
-            top: 50%;
+            top: 49.7%;
+            margin-left: -12%;
             z-index: 1;
             font-family: "Trebuchet MS", Helvetica, sans-serif;
             text-align: center;
@@ -98,7 +113,7 @@
             width: 100%;
             height: 13%;
             position: absolute;
-            background-color: rgba(0, 0, 255, 0.692);
+            background-color: rgba(255, 0, 0, 0.461);
             text-align: left;
             text-decoration-line: underline;
             text-decoration-color: white;
@@ -115,17 +130,12 @@
         }
 
         .userpassbox {
-            width: 30%;
-            height: 16%;
-            background-color: rgb(203, 203, 203);
-            margin-left: 35%;
-            margin-top: 10.5%;
-            z-index: 0;
+            width: 100%;
+            height: 100%;
             position: absolute;
+            margin-top: 8.5em;
             text-align: center;
-            font-size: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            border-radius: 15px;
+            z-index: 0;
         }
 
         .foreground {
@@ -172,29 +182,35 @@
     <div class="foreground">
         <div class="topbar"></div>
         <div class="header" style="color: white">
-            <h1>Display Message Interface</h1>
+            <h1>Super Cool Awesome Message Sender</h1>
         </div>
-        <div class="userpassbox">Enter Username and Password</div>
+        <div class="userpassbox">
+            <textarea readonly style="text-align: center; font-size: 20px; font-family: 'Courier New', Courier, monospace; 
+                resize:none; border-radius:15px; background-color:rgb(203, 203, 203); width:18em; height:16%;">Enter Username and Password</textarea>
+        </div>
         
         <div class="entermsg">
             <form onSubmit="return false;">
                 <p>Message Input:</p>
-                <textarea style="resize:none; width:300px; height:30px; border: solid 2px black; font-size: 16px" 
+                <textarea style="resize:none; width:300px; height:25px; border: solid 2px black; font-size: 16px" 
                      id="messageInput"></textarea>
-                <button type="button" style="width: 125px; height:25px; border: solid 2px black; font-size: 13px; background-color: darkgray;" 
-                    onclick="showPreviewText()">Preview Message</button>
                 <!-- <button type="button" style="width: 100px; height:25px; border: solid 2px black;" 
                     onclick="getDisplayStatus()">GET pull</button> -->
             </form>
         </div>
 
+        <div class="previewButton">
+            <button type="button" style="width: 153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
+                    onclick="showPreviewText()">Preview</button>
+        </div>
+
         <div class="clearButton">
-            <button style="width:250px; height:28px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
-                id="clearButton" type="submit" onclick="clearMessage()"> Clear Message </button>
+            <button style="width:153px; height:25px; border: solid 2px black; font-size: 18px; background-color: darkgray;" 
+                id="clearButton" type="submit" onclick="clearMessage()"> Clear</button>
         </div>
         
         <div class="showmsg">
-            <textarea readonly style="resize:none; width:320px; height:100px; border: solid 2px black; font-size: 16px; background-color: dimgray" 
+            <textarea readonly style="resize:none; width:320px; height:100px; border: solid 2px black; font-size: 24px; background-color: dimgray" 
                 id="preview"></textarea>
         </div>
 
