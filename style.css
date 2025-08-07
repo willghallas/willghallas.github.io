@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: white;
+    padding-top: 6rem;
   }
   
   /* Navbar styles */
@@ -10,15 +11,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: white;
     padding: 2rem 2rem;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
-  }
+    opacity: .8;
+  }  
   
   .logo {
-    color: white;
+    color: black;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -29,29 +32,35 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  .nav-link-contact {
+    margin-right: 2.5rem;
+    padding-right: 0.5rem; 
+  }
   
   .nav-links li {
     margin-left: 1.5rem;
   }
   
   .nav-links a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.5rem;
     transition: color 0.2s ease-in-out;
   }
   
   .nav-links a:hover {
-    color: #ffcc00;
+    color: rgb(40, 40, 197);
   }
   
-  /* Image row styles */
   .image-row {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    flex-wrap: wrap;
+    width: 100%;                    /* Full width of the screen/container */
+    background-color: #f0f0f0;      /* Light gray background */
+    display: flex;                  /* Arrange images in a row */
+    justify-content: center;        /* Center images horizontally */
+    gap: 1rem;                     /* Space between images */
+    padding: 1.5rem 0;              /* Vertical padding */
+    box-sizing: border-box; 
   }
   
   .image-row img {
