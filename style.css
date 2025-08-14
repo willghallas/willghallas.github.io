@@ -177,3 +177,22 @@ body {
     text-decoration: underline;
   }
   
+  .footer {
+    background-color: #111;
+    color: #ccc;
+    text-align: center; 
+    padding: 1rem 0; 
+    width: 100%;  
+    position: relative;  
+  }
+  
+  .footer a {
+    color: #ccc;                  
+    text-decoration: none;
+    margin: 0 0.5rem;              
+  }
+  
+  .footer a:hover {
+    color: white;                  
+  }
+  
